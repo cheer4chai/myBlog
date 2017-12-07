@@ -62,5 +62,5 @@ app.use('/ueditor', function(req, res) {
 //     res.render('../dist/index.html');
 // });
 //监听8080端口
-app.listen(8080);
+app.listen(8888);
 console.log('sucess listen......')

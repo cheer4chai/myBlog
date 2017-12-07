@@ -148,7 +148,12 @@
 
 <script>
 	export default {
-		name: "blog"
+		name: "blog",
+		mounted() {
+			this.$http.get('/api/api/account/getContent',(response) => {
+				console.log(response)
+			})
+		}
 	}
 </script>
 
