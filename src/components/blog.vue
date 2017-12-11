@@ -4,7 +4,7 @@
 			<h3>关于技术</h3>
 		</div>
 		<div class="news-wrap">
-			<div class="news-article-wrapper">
+			<div class="news-article-wrapper" v-for="(item, index) in blogList">
 				<div class="line-cross">
 					<div class="line-down">
 						<router-link :to="{path: '../article/1'}" class="news-article">
@@ -14,126 +14,11 @@
 								</div>
 								<div class="desc">
 									<hgroup>
-										<h3>24 Nov 2017</h3>
-										<h4>The Dowse Road Trip will simplify your summer</h4>
+										<h3>{{item.time}}</h3>
+										<h4>{{item.title}}</h4>
 									</hgroup>
 									<p class="description">
-										This summer we are partnering with Lower Hutt’s finest to make sure your summer is packed with the perfect activities to keep everyone happy.
-									</p>
-									<p class="link">Read More</p>
-								</div>
-							</div>
-						</router-link>
-					</div>
-				</div>
-			</div>
-			<div class="news-article-wrapper">
-				<div class="line-cross">
-					<div class="line-down">
-						<router-link :to="{path: '../article/1'}" class="news-article">
-							<div class="vertical-aligner">
-								<div class="image">
-									<img src="../assets/internation.jpg" alt="">
-								</div>
-								<div class="desc">
-									<hgroup>
-										<h3>24 Nov 2017</h3>
-										<h4>The Dowse Road Trip will simplify your summer</h4>
-									</hgroup>
-									<p class="description">
-										This summer we are partnering with Lower Hutt’s finest to make sure your summer is packed with the perfect activities to keep everyone happy.
-									</p>
-									<p class="link">Read More</p>
-								</div>
-							</div>
-						</router-link>
-					</div>
-				</div>
-			</div>
-			<div class="news-article-wrapper">
-				<div class="line-cross">
-					<div class="line-down">
-						<router-link :to="{path: '../article/1'}" class="news-article">
-							<div class="vertical-aligner">
-								<div class="image">
-									<img src="assets/logo.png" alt="">
-								</div>
-								<div class="desc">
-									<hgroup>
-										<h3>24 Nov 2017</h3>
-										<h4>The Dowse Road Trip will simplify your summer</h4>
-									</hgroup>
-									<p class="description">
-										This summer we are partnering with Lower Hutt’s finest to make sure your summer is packed with the perfect activities to keep everyone happy.
-									</p>
-									<p class="link">Read More</p>
-								</div>
-							</div>
-						</router-link>
-					</div>
-				</div>
-			</div>
-			<div class="news-article-wrapper">
-				<div class="line-cross">
-					<div class="line-down">
-						<router-link :to="{path: '../article/1'}" class="news-article">
-							<div class="vertical-aligner">
-								<div class="image">
-									<img src="assets/logo.png" alt="">
-								</div>
-								<div class="desc">
-									<hgroup>
-										<h3>24 Nov 2017</h3>
-										<h4>The Dowse Road Trip will simplify your summer</h4>
-									</hgroup>
-									<p class="description">
-										This summer we are partnering with Lower Hutt’s finest to make sure your summer is packed with the perfect activities to keep everyone happy.
-									</p>
-									<p class="link">Read More</p>
-								</div>
-							</div>
-						</router-link>
-					</div>
-				</div>
-			</div>
-			<div class="news-article-wrapper">
-				<div class="line-cross">
-					<div class="line-down">
-						<router-link :to="{path: '../article/1'}" class="news-article">
-							<div class="vertical-aligner">
-								<div class="image">
-									<img src="assets/logo.png" alt="">
-								</div>
-								<div class="desc">
-									<hgroup>
-										<h3>24 Nov 2017</h3>
-										<h4>The Dowse Road Trip will simplify your summer</h4>
-									</hgroup>
-									<p class="description">
-										This summer we are partnering with Lower Hutt’s finest to make sure your summer is packed with the perfect activities to keep everyone happy.
-									</p>
-									<p class="link">Read More</p>
-								</div>
-							</div>
-						</router-link>
-					</div>
-				</div>
-			</div>
-			<div class="news-article-wrapper">
-				<div class="line-cross">
-					<div class="line-down">
-						<router-link :to="{path: '../article/1'}" class="news-article">
-							<div class="vertical-aligner">
-								<div class="image">
-									<img src="assets/logo.png" alt="">
-								</div>
-								<div class="desc">
-									<hgroup>
-										<h3>24 Nov 2017</h3>
-										<h4>The Dowse Road Trip will simplify your summer</h4>
-									</hgroup>
-									<p class="description">
-										This summer we are partnering with Lower Hutt’s finest to make sure your summer is packed with the perfect activities to keep everyone happy.
+										{{item.summary}}
 									</p>
 									<p class="link">Read More</p>
 								</div>
@@ -149,9 +34,16 @@
 <script>
 	export default {
 		name: "blog",
+		data() {
+			return {
+				blogList: []
+			}
+			
+		},
 		mounted() {
-			this.$http.get('/api/api/account/getContent',(response) => {
+			this.$http.get('/api/api/account/getContent').then(response => {
 				console.log(response)
+				this.blogList = response.data
 			})
 		}
 	}

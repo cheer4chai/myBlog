@@ -25,10 +25,10 @@
 </el-form>
     <p class="label">文章内容：</p>
     <div class="m10">
-      <UE :defaultMsg=defaultMsg :config=config :id=ue1 ref="ue"></UE>
+      <UE :defaultMsg=defaultMsg :config=config :id=this.$route.params.id ref="ue" v-if="flag"></UE>
     </div>
     <div class="uploadButton">
-      <el-button type="primary" @click="getUEContent">上传</el-button>
+      <el-button type="primary" @click="getUEContent">修改</el-button>
     </div>
     
   </div>
@@ -69,16 +69,17 @@ import { Loading } from "element-ui";
 import UE from "../backend/UE.vue";
 
 export default {
-  name: "editor",
+  name: "articleDetail",
   components: { UE },
   data() {
     return {
       defaultMsg: "",
+      flag: false,
       config: {
         initialFrameWidth: null,
         initialFrameHeight: 350
       },
-      ue1: "ue1",
+      ue2: "ue2",
       form: {
         title: "",
         summary: "",
@@ -111,6 +112,21 @@ export default {
       ]
     };
   },
+  mounted() {
+    let url = "/api/api/account/getContent?_id=" + this.$route.params.id;
+    this.$http.get(url).then(
+      response => {
+        this.defaultMsg = response.data[0].detail;
+        this.form.title = response.data[0].title;
+        this.form.cat = response.data[0].cat?response.data[0].cat.split(';'):'';
+        this.form.summary = response.data[0].summary;
+        this.flag = true;
+      },
+      response => {
+        console.log(response);
+      }
+    );
+  },
   methods: {
     getUEContent() {
       // 获取内容方法
@@ -122,8 +138,9 @@ export default {
             loadingInstance.close();
           });
           let content = this.$refs.ue.getUEContent();
-          let URL = "/api/api/account/createContent";
+          let URL = "/api/api/account/changeContent";
           let obj = {
+            id: this.$route.params.id,
             account: "chaiyanchen",
             title: this.form.title,
             cart: this.form.cat.join(';'),
@@ -137,7 +154,7 @@ export default {
                   message: response.data.sucess,
                   type: "success"
                 });
-                this.$router.push('/backend/articleList')
+                //this.$router.push("/backend/articleList");
               } else {
                 this.$message.error(response.data);
               }

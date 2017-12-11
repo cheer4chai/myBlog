@@ -122,4 +122,28 @@ router.get('/api/account/getContent', (req, res) => {
     });
 })
 
+//修改文章接口
+router.post('/api/account/changeContent', (req, res) => {
+    let sendObj = {
+        account: req.body.account,
+        title: req.body.title,
+        summary: req.body.summary,
+        detail: req.body.detail,
+        cat: req.body.cat,
+        time: new Date()
+    }
+    let result = validate.content(sendObj);
+    if (result == 'success') {
+        models.Content.update({ _id: req.body.id }, { $set: sendObj }, (err, data) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(data);
+            }
+        })
+    } else {
+        res.send('failed!');
+    }
+})
+
 module.exports = router;

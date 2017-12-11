@@ -10,6 +10,7 @@ import article from '../components/article.vue'
 import backend from '../components/backend/backend.vue'
 import editor from '../components/backend/editor.vue'
 import articleList from '../components/backend/articleList.vue'
+import articleDetail from '../components/backend/articleDetail.vue'
 
 Vue.use(Router)
 
@@ -46,6 +47,9 @@ export default new Router({
                 }, {
                     path: 'articleList',
                     component: articleList
+                }, {
+                    path: '/backend/articleList/id/:id',
+                    component: articleDetail
                 }]
             }
         ]

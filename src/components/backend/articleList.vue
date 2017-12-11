@@ -1,6 +1,6 @@
 <template>
   <el-main>
-      <el-table class="containTable" :data="tableData">
+      <el-table class="containTable" :data="tableData" max-height="80vh" @cell-click="viewDetail">
         <el-table-column prop="title" label="标题">
         </el-table-column>
         <el-table-column prop="cat" label="类别">
@@ -47,7 +47,12 @@ export default {
   methods: {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+    },
+    viewDetail(row, column, cell, event) {
+      console.log(row._id)
+      this.$router.push({path: '/backend/articleList/id/' + row._id})
     }
   }
 };
 </script>
+

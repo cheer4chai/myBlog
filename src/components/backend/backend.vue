@@ -4,8 +4,8 @@
     <el-menu :default-openeds="['1']" :router=true>
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>文章管理</template>
-          <el-menu-item index="articleList">文章列表</el-menu-item>
-          <el-menu-item index="editor">新建文章</el-menu-item>
+          <el-menu-item index="/backend/articleList">文章列表</el-menu-item>
+          <el-menu-item index="/backend/editor">新建文章</el-menu-item>
       </el-submenu>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>评论管理</template>
@@ -16,14 +16,6 @@
   
   <el-container>
     <el-header style="text-align: right; font-size: 12px">
-      <el-dropdown>
-        <i class="el-icon-setting" style="margin-right: 15px"></i>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>查看</el-dropdown-item>
-          <el-dropdown-item>新增</el-dropdown-item>
-          <el-dropdown-item>删除</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
       <span>后台管理</span>
     </el-header>
     <router-view></router-view>
