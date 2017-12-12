@@ -111,6 +111,17 @@ router.post('/api/account/createContent', (req, res) => {
     }
 })
 
+//获取文章列表&分页接口
+router.get('/api/account/getArticleList', (req, res) => {
+    models.Content.find().limit(parseInt(req.query.pageSize)).skip(parseInt(req.query.count)).exec((err, data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    })
+})
+
 //查看文章接口
 router.get('/api/account/getContent', (req, res) => {
     models.Content.find(req.query, (err, data) => {

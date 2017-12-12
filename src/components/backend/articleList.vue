@@ -7,13 +7,22 @@
         </el-table-column>
         <el-table-column prop="summary" label="摘要">
         </el-table-column>
+        <el-table-column
+      fixed="right"
+      label="操作"
+      width="100">
+      <template slot-scope="scope">
+        <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+        <el-button type="text" size="small">编辑</el-button>
+      </template>
+    </el-table-column>
       </el-table>
       <el-pagination
       @current-change="handleCurrentChange"
       :current-page.sync="currentPage"
-      :page-size="100"
+      :page-size="10"
       layout="prev, pager, next, jumper"
-      :total="1000">
+      :total="10">
     </el-pagination>
     </el-main>
 </template>
@@ -22,8 +31,13 @@
 export default {
   name: "articleList",
   mounted() {
-    let url = "/api/api/account/getContent";
-    this.$http.get(url).then(
+    let url = "/api/api/account/getArticleList";
+    this.$http.get(url, {
+      params: {
+        pageSize: 10,
+        count: 1
+      }
+    }).then(
       response => {
         console.log(response);
         this.tableData = response.data;

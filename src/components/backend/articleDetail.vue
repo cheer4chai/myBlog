@@ -83,7 +83,7 @@ export default {
       form: {
         title: "",
         summary: "",
-        cat: ""
+        cat: []
       },
       rules: {
         title: [
@@ -118,7 +118,7 @@ export default {
       response => {
         this.defaultMsg = response.data[0].detail;
         this.form.title = response.data[0].title;
-        this.form.cat = response.data[0].cat?response.data[0].cat.split(';'):'';
+        this.form.cat = response.data[0].cat?response.data[0].cat.split(';'):[];
         this.form.summary = response.data[0].summary;
         this.flag = true;
       },
@@ -143,7 +143,7 @@ export default {
             id: this.$route.params.id,
             account: "chaiyanchen",
             title: this.form.title,
-            cart: this.form.cat.join(';'),
+            cat: this.form.cat.join(';'),
             summary: this.form.summary,
             detail: content
           };
@@ -151,10 +151,10 @@ export default {
             response => {
               if (response.status == 200) {
                 this.$message({
-                  message: response.data.sucess,
+                  message: "修改成功！",
                   type: "success"
                 });
-                //this.$router.push("/backend/articleList");
+                this.$router.push("/backend/articleList");
               } else {
                 this.$message.error(response.data);
               }
