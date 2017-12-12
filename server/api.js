@@ -56,7 +56,7 @@ router.get('/api/getSession', (req, res) => {
         var account = req.session.account[0];
         res.send({ msg: '你好' + account.account + '，欢迎来到我的家园。', data: account });
     } else {
-        res.send('木了');
+        res.send('木了test');
     }
 })
 router.get('/api/saveSession', (req, res) => {
