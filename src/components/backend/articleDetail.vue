@@ -22,6 +22,18 @@
   <el-form-item label="文章摘要" prop="summary">
     <el-input type="textarea" v-model="form.summary"></el-input>
   </el-form-item>
+  <el-form-item label="文章封面">
+    <el-upload
+  class="avatar-uploader"
+  action="/api/ueditor/ue?action=uploadimage&encode=utf-8"
+  :show-file-list="false"
+  :on-success="handleAvatarSuccess"
+  :before-upload="beforeAvatarUpload"
+>
+  <img v-if="imageUrl" :src="imageUrl" class="avatar">
+  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+</el-upload>
+  </el-form-item>
 </el-form>
     <p class="label">文章内容：</p>
     <div class="m10">
@@ -62,6 +74,29 @@
 .uploadButton .el-button {
   width: 120px;
 }
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
 </style>
 
 
@@ -76,6 +111,7 @@ export default {
     return {
       defaultMsg: "",
       flag: false,
+      imageUrl: "",
       config: {
         initialFrameWidth: null,
         initialFrameHeight: 350
@@ -123,6 +159,7 @@ export default {
           ? response.data[0].cat.split(";")
           : [];
         this.form.summary = response.data[0].summary;
+        this.imageUrl = response.data[0].image;
         this.flag = true;
       },
       response => {
@@ -148,7 +185,8 @@ export default {
             title: this.form.title,
             cat: this.form.cat.join(";"),
             summary: this.form.summary,
-            detail: content
+            detail: content,
+            image: this.imageUrl
           };
           this.$http.post(URL, obj).then(
             response => {
@@ -201,6 +239,22 @@ export default {
             message: "已取消删除"
           });
         });
+    },
+    handleAvatarSuccess(res, file) {
+      console.log(res)
+      this.imageUrl = '/api' + res.url;
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === "image/jpeg" || "image/png";
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error("上传头像图片只能是 JPG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      return isJPG && isLt2M;
     }
   }
 };

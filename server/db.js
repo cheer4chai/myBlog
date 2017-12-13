@@ -19,6 +19,7 @@ const contentSchema = mongoose.Schema({
     summary: String,
     detail: String,
     cat: String,
+    image: String,
     time: Date
 });
 

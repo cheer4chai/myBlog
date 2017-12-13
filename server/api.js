@@ -56,7 +56,7 @@ router.get('/api/getSession', (req, res) => {
         //var account = req.session.account[0];
         res.send({ code: 200, msg: 'online' });
     } else {
-        res.send({ cde: 201, msg: 'offline' });
+        res.send({ code: 201, msg: 'offline' });
     }
 })
 router.get('/api/saveSession', (req, res) => {
@@ -152,6 +152,7 @@ router.post('/api/account/changeContent', (req, res) => {
             summary: req.body.summary,
             detail: req.body.detail,
             cat: req.body.cat,
+            image: req.body.image,
             time: new Date()
         }
         let result = validate.content(sendObj);

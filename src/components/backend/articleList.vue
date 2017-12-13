@@ -22,6 +22,14 @@
 export default {
   name: "articleList",
   mounted() {
+    //检验登录状态
+    this.$http
+      .get('/api/api/getSession')
+      .then(response => {
+        if(response.data.code == 201) {
+          this.$router.push({ path: "/login"});
+        }
+      })
     let url = "/api/api/account/getArticleList";
     this.$http
       .get(url, {
