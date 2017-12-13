@@ -53,10 +53,10 @@ router.post('/api/account/createAccount', (req, res) => {
 //session
 router.get('/api/getSession', (req, res) => {
     if (req.session.account) {
-        var account = req.session.account[0];
-        res.send({ msg: '你好' + account.account + '，欢迎来到我的家园。', data: account });
+        //var account = req.session.account[0];
+        res.send({ code: 200, msg: 'online' });
     } else {
-        res.send('木了test');
+        res.send({ cde: 201, msg: 'offline' });
     }
 })
 router.get('/api/saveSession', (req, res) => {
@@ -73,15 +73,15 @@ router.get('/api/account/getAccount', (req, res) => {
             if (data.length == 1) {
                 if (data[0].password == req.query.password) {
                     req.session.account = data;
-                    res.send({ code: 0, sucess: '登陆成功' });
+                    res.send({ code: 200, sucess: '登陆成功' });
                 } else {
-                    res.send({ code: 1, error: '密码错误，请重新输入' });
+                    res.send({ code: 201, error: '密码错误，请重新输入' });
                 }
 
             } else if (data.length == 0) {
-                res.send({ code: 1, error: '无该账号，请注册' });
+                res.send({ code: 201, error: '无该账号，请注册' });
             } else {
-                res.send({ code: 1, error: '登录失败' });
+                res.send({ code: 201, error: '登录失败' });
             }
         }
     });
@@ -89,25 +89,29 @@ router.get('/api/account/getAccount', (req, res) => {
 
 //储存文章接口
 router.post('/api/account/createContent', (req, res) => {
-    let sendObj = {
-        account: req.body.account,
-        title: req.body.title,
-        summary: req.body.summary,
-        detail: req.body.detail,
-        cat: req.body.cat,
-        time: new Date()
-    }
-    let result = validate.content(sendObj);
-    if (result == 'success') {
-        let newContent = new models.Content(sendObj);
-        // 保存数据newAccount数据进mongoDB
-        newContent.save((err, data) => {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send({ sucess: 'createContent successed' });
-            }
-        });
+    if (req.session.account) {
+        let sendObj = {
+            account: req.body.account,
+            title: req.body.title,
+            summary: req.body.summary,
+            detail: req.body.detail,
+            cat: req.body.cat,
+            time: new Date()
+        }
+        let result = validate.content(sendObj);
+        if (result == 'success') {
+            let newContent = new models.Content(sendObj);
+            // 保存数据newAccount数据进mongoDB
+            newContent.save((err, data) => {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send({ sucess: 'createContent successed' });
+                }
+            });
+        }
+    } else {
+        res.send({ code: 300, sucess: '请登录' });
     }
 })
 
@@ -141,46 +145,54 @@ router.get('/api/account/getContent', (req, res) => {
 
 //修改文章接口
 router.post('/api/account/changeContent', (req, res) => {
-    let sendObj = {
-        account: req.body.account,
-        title: req.body.title,
-        summary: req.body.summary,
-        detail: req.body.detail,
-        cat: req.body.cat,
-        time: new Date()
-    }
-    let result = validate.content(sendObj);
-    if (result == 'success') {
-        models.Content.update({ _id: req.body.id }, { $set: sendObj }, (err, data) => {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send(data);
-            }
-        })
+    if (req.session.account) {
+        let sendObj = {
+            account: req.body.account,
+            title: req.body.title,
+            summary: req.body.summary,
+            detail: req.body.detail,
+            cat: req.body.cat,
+            time: new Date()
+        }
+        let result = validate.content(sendObj);
+        if (result == 'success') {
+            models.Content.update({ _id: req.body.id }, { $set: sendObj }, (err, data) => {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send(data);
+                }
+            })
+        } else {
+            res.send('failed!');
+        }
     } else {
-        res.send('failed!');
+        res.send({ code: 300, sucess: '请登录' });
     }
 })
 
 //删除文章接口
 router.get('/api/account/deleteContent', (req, res) => {
-    models.Content.findOne({ _id: req.query.id }, (err, doc) => {
-        if (err) {
-            res.send(err)
-        } else {
-            models.Content.remove({ _id: req.query.id }, (err) => {
-                if (err) {
-                    res.send(err)
-                } else {
-                    res.send({
-                        code: 200,
-                        success: 'delete success!'
-                    })
-                }
-            })
-        }
-    })
+    if (req.session.account) {
+        models.Content.findOne({ _id: req.query.id }, (err, doc) => {
+            if (err) {
+                res.send(err)
+            } else {
+                models.Content.remove({ _id: req.query.id }, (err) => {
+                    if (err) {
+                        res.send(err)
+                    } else {
+                        res.send({
+                            code: 200,
+                            success: 'delete success!'
+                        })
+                    }
+                })
+            }
+        })
+    } else {
+        res.send({ code: 300, sucess: '请登录' });
+    }
 })
 
 module.exports = router;
