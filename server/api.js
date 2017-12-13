@@ -113,13 +113,19 @@ router.post('/api/account/createContent', (req, res) => {
 
 //获取文章列表&分页接口
 router.get('/api/account/getArticleList', (req, res) => {
-    models.Content.find().limit(parseInt(req.query.pageSize)).skip(parseInt(req.query.count)).exec((err, data) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send(data);
-        }
+    models.Content.count({}, (err, count) => {
+        models.Content.find().limit(parseInt(req.query.pageSize)).skip(parseInt(req.query.pageSize) * parseInt(req.query.count)).exec((err, data) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send({
+                    data: data,
+                    count: count
+                });
+            }
+        })
     })
+
 })
 
 //查看文章接口
@@ -155,6 +161,26 @@ router.post('/api/account/changeContent', (req, res) => {
     } else {
         res.send('failed!');
     }
+})
+
+//删除文章接口
+router.get('/api/account/deleteContent', (req, res) => {
+    models.Content.findOne({ _id: req.query.id }, (err, doc) => {
+        if (err) {
+            res.send(err)
+        } else {
+            models.Content.remove({ _id: req.query.id }, (err) => {
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.send({
+                        code: 200,
+                        success: 'delete success!'
+                    })
+                }
+            })
+        }
+    })
 })
 
 module.exports = router;

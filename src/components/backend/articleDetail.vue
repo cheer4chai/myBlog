@@ -29,6 +29,7 @@
     </div>
     <div class="uploadButton">
       <el-button type="primary" @click="getUEContent">修改</el-button>
+      <el-button type="danger" @click="deleteUEContent">删除</el-button>
     </div>
     
   </div>
@@ -118,7 +119,9 @@ export default {
       response => {
         this.defaultMsg = response.data[0].detail;
         this.form.title = response.data[0].title;
-        this.form.cat = response.data[0].cat?response.data[0].cat.split(';'):[];
+        this.form.cat = response.data[0].cat
+          ? response.data[0].cat.split(";")
+          : [];
         this.form.summary = response.data[0].summary;
         this.flag = true;
       },
@@ -143,7 +146,7 @@ export default {
             id: this.$route.params.id,
             account: "chaiyanchen",
             title: this.form.title,
-            cat: this.form.cat.join(';'),
+            cat: this.form.cat.join(";"),
             summary: this.form.summary,
             detail: content
           };
@@ -168,6 +171,36 @@ export default {
           return false;
         }
       });
+    },
+    goBack() {
+      this.$router.push("/backend/articleList");
+    },
+    deleteUEContent() {
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          this.$http
+            .get("/api/api/account/deleteContent?id=" + this.$route.params.id)
+            .then(response => {
+              console.log(response);
+              if (response.data.code == 200) {
+                this.$message({
+                  type: "success",
+                  message: "删除成功!",
+                  onClose: this.goBack()
+                });
+              }
+            });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除"
+          });
+        });
     }
   }
 };
