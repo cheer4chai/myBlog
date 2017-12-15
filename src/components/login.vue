@@ -123,7 +123,7 @@
             let data = response.data;
             if (data.code == 200) {
               this.$message("登陆成功");
-              this.$router.push("home");
+              this.$router.push("/backend/articleList");
             } else {
               this.$message(data.error);
             }
