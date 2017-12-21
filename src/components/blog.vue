@@ -7,7 +7,7 @@
 			<div class="news-article-wrapper" v-for="(item, index) in blogList">
 				<div class="line-cross">
 					<div class="line-down">
-						<router-link :to="{path: '../article/1'}" class="news-article">
+						<router-link :to="{path: '../article/'+item._id}" class="news-article">
 							<div class="vertical-aligner">
 								<div class="image">
 									<img src="../assets/logo.png" alt="">
