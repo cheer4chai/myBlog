@@ -29,11 +29,10 @@ export default new Router({
                 children: [{
                     path: 'blog',
                     component: blog
+                }, {
+                    path: '/article/:articleId',
+                    component: article
                 }]
-            },
-            {
-                path: '/article/:articleId',
-                component: article
             }, {
                 path: '/login',
                 component: login
