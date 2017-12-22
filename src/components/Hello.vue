@@ -4,9 +4,9 @@
   <h2>My Blog</h2>
 </header>
 <nav class="trees">
-  <a href="">关于技术</a>
+  <router-link :to="{path: '/home/blog'}">关于技术</router-link>
   <a href="">随笔</a>
-  <a href="">作品</a>
+  <router-link :to="{path: '/home/project'}">关于技术</router-link>
   <a class="last" href="">常用资源</a>
 </nav>
 <router-view></router-view>
@@ -57,9 +57,10 @@ nav.trees a {
     font-size: 1.25em;
     margin: 0 40px;
     position: relative;
-    font-family: 'Avenir LT W02 65 Medium',helvetica,sans-serif;
-    font-weight: 500;
+    font-family: "Microsoft Yahei";
+    font-weight: bold;
     letter-spacing: 0;
+    text-decoration: none;
 }
 nav.trees a:after {
     content: '';
@@ -77,6 +78,26 @@ nav.trees a.last:after{display:none}
     display: block;
     visibility: hidden;
     height: 0;
+}
+body #footer {
+    margin-top: 80px;
+}
+
+#footer {
+    max-width: 1040px;
+    margin: 80px auto 0;
+    padding: 0 80px 130px;
+    position: relative;
+    margin-top: 80px;
+    z-index: 100;
+    color: #222;
+}
+#footer:before {
+    content: '';
+    width: 1040px;
+    margin: 0 auto 60px;
+    display: block;
+    border-top: 5px #000 solid;
 }
 </style>
 

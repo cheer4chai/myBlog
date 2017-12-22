@@ -6,6 +6,7 @@ import hello from '../components/Hello.vue'
 import login from '../components/login.vue'
 import blog from '../components/blog.vue'
 import article from '../components/article.vue'
+import project from '../components/project.vue'
 
 import backend from '../components/backend/backend.vue'
 import editor from '../components/backend/editor.vue'
@@ -32,6 +33,9 @@ export default new Router({
                 }, {
                     path: '/article/:articleId',
                     component: article
+                }, {
+                    path: 'project',
+                    component: project
                 }]
             }, {
                 path: '/login',

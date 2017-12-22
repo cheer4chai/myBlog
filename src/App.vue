@@ -25,7 +25,7 @@ export default {
 <style>
 
 body, table, input {
-    font-family: 'Avenir LT W02 55 Roman',helvetica,sans-serif;
+    font-family: "Microsoft Yahei";
     font-weight: 400;
     line-height: 1.5;
     font-size: 14px;
@@ -42,5 +42,11 @@ body, table, input {
 a {
     color: #000;
     text-decoration: none;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+  opacity: 0
 }
 </style>
