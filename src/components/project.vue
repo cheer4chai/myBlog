@@ -1,10 +1,10 @@
 <template>
   <div class="exhibitions-wrap">
         <article class="exhibition-listing odd">
-            <a class="wrap" href="/exhibitions/detail/doreen-blumhardt">
+            <a class="wrap" href="https://github.com/cheer4chai/cheer">
                 <div class="text firstText">
-                    <h3>Doreen Blumhardt: Jet-Powered Meteor</h3>
-                    <p class="date">13 Dec 2017 – 01 Apr 2018</p>
+                    <h3>前端工具库cheer</h3>
+                    <p class="date">13 Dec 2016 – 01 Apr 2017</p>
                     <p class="link">Info</p>
                 </div>
                 <div class="image-wrap">
@@ -19,8 +19,24 @@
         <article class="exhibition-listing even">
             <a class="wrap" href="/exhibitions/detail/gavin-hipkins-the-domain">
                 <div class="text">
-                    <h3>Gavin Hipkins: The Domain</h3>
-                    <p class="date">25 Nov 2017 – 25 Mar 2018</p>
+                    <h3>简易UI组件</h3>
+                    <p class="date">25 Nov 2016 – 25 Mar 2017</p>
+                    <p class="link">Info</p>
+                </div>
+                <div class="image-wrap">
+                    <div class="image-wrap2">
+                    <div class="image">
+                        <img src="../assets/logo.png" width="210" height="210" alt="">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+        <article class="exhibition-listing odd">
+            <a class="wrap" href="https://github.com/cheer4chai/myBlog">
+                <div class="text">
+                    <h3>个人博客项目</h3>
+                    <p class="date">13 Apr 2017 – 01 Jan 2018</p>
                     <p class="link">Info</p>
                 </div>
                 <div class="image-wrap">
