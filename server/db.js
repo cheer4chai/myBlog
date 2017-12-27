@@ -28,11 +28,20 @@ const catSchema = mongoose.Schema({
     catname: String
 });
 
+const commentSchema = mongoose.Schema({
+    articleId: String,
+    name: String,
+    time: Date,
+    content: String,
+    status: String
+})
+
 /************** 定义模型Model **************/
 const Models = {
     Account: mongoose.model('Account', accountSchema),
     Content: mongoose.model('Content', contentSchema),
-    Cat: mongoose.model('Cat', catSchema)
+    Cat: mongoose.model('Cat', catSchema),
+    Comment: mongoose.model('Comment', commentSchema)
 };
 
 module.exports = Models;

@@ -196,4 +196,40 @@ router.get('/api/account/deleteContent', (req, res) => {
     }
 })
 
+//评论接口
+//新增接口
+router.post('/api/account/createComment', (req, res) => {
+    let sendObj = {
+        articleId: req.body.articleId,
+        name: req.body.name,
+        content: req.body.content,
+        status: 'unreviewed',
+        time: new Date()
+    }
+    let result = validate.comment(sendObj);
+    if (result == 'success') {
+        let newComment = new models.Comment(sendObj);
+        // 保存数据newAccount数据进mongoDB
+        newComment.save((err, data) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send({ sucess: 'createComment successed' });
+            }
+        });
+    }
+})
+
+//查询评论
+router.get('/api/account/getComment', (req, res) => {
+    models.Comment.find(req.query, (err, data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+})
+
+
 module.exports = router;

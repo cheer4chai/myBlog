@@ -38,10 +38,24 @@ function content(opt) {
     return 'success'
 }
 
+function comment(opt) {
+    if (!opt.articleId) {
+        return '未指定评论文章'
+    }
+    if (!opt.name) {
+        return '评论人'
+    }
+    if (!opt.content) {
+        return '评论内容不可为空'
+    }
+    return 'success'
+}
+
 const validate = {
     account: account,
     user: user,
-    content: content
+    content: content,
+    comment: comment
 }
 
 module.exports = validate;
