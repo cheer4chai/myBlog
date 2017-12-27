@@ -96,7 +96,7 @@ router.post('/api/account/createContent', (req, res) => {
             summary: req.body.summary,
             detail: req.body.detail,
             cat: req.body.cat,
-            time: new Date()
+            time: Date()
         }
         let result = validate.content(sendObj);
         if (result == 'success') {
@@ -153,7 +153,7 @@ router.post('/api/account/changeContent', (req, res) => {
             detail: req.body.detail,
             cat: req.body.cat,
             image: req.body.image,
-            time: new Date()
+            time: Date()
         }
         let result = validate.content(sendObj);
         if (result == 'success') {
@@ -202,9 +202,10 @@ router.post('/api/account/createComment', (req, res) => {
     let sendObj = {
         articleId: req.body.articleId,
         name: req.body.name,
+        email: req.body.email,
         content: req.body.content,
         status: 'unreviewed',
-        time: new Date()
+        time: Date()
     }
     let result = validate.comment(sendObj);
     if (result == 'success') {

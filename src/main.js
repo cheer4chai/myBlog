@@ -25,3 +25,8 @@ new Vue({
     template: '<App/>',
     components: { App }
 })
+
+Vue.filter('DateTransform',function(d) {
+    let now = new Date(d);
+    return now.getFullYear() + '年' + now.getMonth() + '月' + now.getDate() + '日 ' + now.getHours() + ':' + now.getMinutes()
+})

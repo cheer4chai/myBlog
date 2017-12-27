@@ -31,6 +31,7 @@ const catSchema = mongoose.Schema({
 const commentSchema = mongoose.Schema({
     articleId: String,
     name: String,
+    email: String,
     time: Date,
     content: String,
     status: String

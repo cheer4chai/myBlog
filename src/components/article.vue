@@ -11,18 +11,13 @@
         <blockquote v-html="blogData.summary"></blockquote>
         <div v-html="blogData.detail"></div>
       </div>
-      <section class="commentShow">
+      <section class="commentShow" v-if="commentData.length>0">
         <h5>留言</h5>
         <div class="text">
-          <article>
-            <p class="name">cheer4chai 说：</p>
-            <p class="comment-content">很实用的东西，浅显易懂~</p>
-            <time>2017年12月27日 21:28</time>
-          </article>
-          <article>
-            <p class="name">cheer4chai 说：</p>
-            <p class="comment-content">很实用的东西，浅显易懂~</p>
-            <time>2017年12月27日 21:28</time>
+          <article v-for="item in commentData">
+            <p class="name">{{item.name}} 说：</p>
+            <p class="comment-content">{{item.content}}</p>
+            <time>{{item.time | DateTransform}}</time>
           </article>
         </div>
       </section>
@@ -32,23 +27,23 @@
           </h2>
           <transition name="fade">
           <article v-show="showComment">
-            <form action="" class="commentsform">
+            <div class="commentsform">
             <p class="name">
               <label for="id_name">姓名</label>
-              <input type="text" id="id_name">
+              <input type="text" id="id_name" v-model="name">
             </p>
             <p class="email">
               <label for="id_name">邮箱</label>
-              <input type="text" id="id_name">
+              <input type="text" id="id_name" v-model="email">
             </p>
             <p class="comment">
               <label for="id_comment">评论</label>
-              <textarea cols="40" id="id_comment" name="comment" rows="10"></textarea>
+              <textarea cols="40" id="id_comment" name="comment" rows="10" v-model="commentContent"></textarea>
             </p>
             <p>
-              <input type="submit" name="post" class="submit" value="提交">
+              <input type="submit" class="submit" @click="comment" value="提交">
             </p>
-            </form>
+            </div>
            
           </article>
         </transition>
@@ -69,14 +64,58 @@ export default {
   data() {
     return {
       blogData: {},
-      showComment: false
+      commentData: [],
+      showComment: false,
+      name: "",
+      email: "",
+      commentContent: ""
     };
   },
+  methods: {
+    comment: function() {
+      console.log(this.$router)
+      if (!this.name) {
+        this.$message.error("请输入姓名！");
+      } else if (!this.email) {
+        this.$message.error("请输入邮箱！");
+      } else if (!this.commentContent) {
+        this.$message.error("请输入评论内容！");
+      }
+      this.fullscreenLoading = true;
+      let url = "/api/api/account/createComment";
+      let obj = {
+        articleId: this.$route.params.articleId,
+        name: this.name,
+        email: this.email,
+        content: this.commentContent
+      };
+      this.$http.post(url, obj).then(response => {
+        console.log(response);
+        this.fullscreenLoading = false;
+        if(response.data.sucess) {
+          this.$message({
+            message: '留言成功！',
+            type: 'success',
+            onClose: ()=>{
+              this.$router.go(0)
+            }
+          });
+        }
+      });
+    }
+  },
   mounted() {
+    window.scrollTo(0,0)
+    //获取文章内容
     let url = "/api/api/account/getContent?_id=" + this.$route.params.articleId;
     this.$http.get(url).then(response => {
       console.log(response);
       this.blogData = response.data[0];
+    });
+    //获取评论内容，只读取前10条评论
+    let commentUrl = "/api/api/account/getComment?articleId=" + this.$route.params.articleId;
+    this.$http.get(commentUrl).then(response => {
+      this.commentData = response.data.splice(0,10);
     });
   }
 };
@@ -130,35 +169,34 @@ body .article-detail .text {
   position: relative;
   margin-top: 40px;
 }
-.commentShow h5{
+.commentShow h5 {
   font-size: 16px;
   border-bottom: 5px solid #000;
 }
 
-.commentShow .text{
+.commentShow .text {
   margin: 0 auto;
   width: 600px;
 }
 
-.commentShow .text>article{
+.commentShow .text > article {
   margin: 30px 0;
 }
 
-.commentShow .text>article .name{
+.commentShow .text > article .name {
   font-size: 16px;
   font-weight: bold;
 }
 
-.commentShow .text>article .comment-content{
+.commentShow .text > article .comment-content {
   font-size: 14px;
   margin: 10px 1em;
 }
 
-.commentShow .text>article time{
+.commentShow .text > article time {
   display: block;
   text-align: right;
 }
-
 
 .comments {
   width: 820px;
@@ -253,7 +291,7 @@ body .article-detail .text {
   width: 530px;
 }
 
-.comments .commentsform .comment label{
+.comments .commentsform .comment label {
   display: block;
 }
 
@@ -270,20 +308,20 @@ body .article-detail .text {
   color: #fff;
   padding: 10px;
   font-size: 1.2em;
+  cursor: pointer;
 }
 body .article-detail .news-transport {
-    position: relative;
-    margin: 0 auto;
-    width: 1040px;
-    font-size: 25px;
+  position: relative;
+  margin: 0 auto;
+  width: 1040px;
+  font-size: 25px;
 }
 body .article-detail .news-transport a {
-    color: #000;
-    text-decoration: none;
+  color: #000;
+  text-decoration: none;
 }
 body .article-detail .news-transport .next {
-    position: absolute;
-    right: 0;
+  position: absolute;
+  right: 0;
 }
-
 </style>
