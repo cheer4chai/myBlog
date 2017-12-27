@@ -11,6 +11,21 @@
         <blockquote v-html="blogData.summary"></blockquote>
         <div v-html="blogData.detail"></div>
       </div>
+      <section class="commentShow">
+        <h5>留言</h5>
+        <div class="text">
+          <article>
+            <p class="name">cheer4chai 说：</p>
+            <p class="comment-content">很实用的东西，浅显易懂~</p>
+            <time>2017年12月27日 21:28</time>
+          </article>
+          <article>
+            <p class="name">cheer4chai 说：</p>
+            <p class="comment-content">很实用的东西，浅显易懂~</p>
+            <time>2017年12月27日 21:28</time>
+          </article>
+        </div>
+      </section>
         <section class="comments">
           <h2>
             <a href="javascript:;" @click="showComment=!showComment">Add a Comment</a>
@@ -108,6 +123,43 @@ body .article-detail .text {
   margin: 0 auto;
   width: 600px;
 }
+.commentShow {
+  width: 820px;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  margin-top: 40px;
+}
+.commentShow h5{
+  font-size: 16px;
+  border-bottom: 5px solid #000;
+}
+
+.commentShow .text{
+  margin: 0 auto;
+  width: 600px;
+}
+
+.commentShow .text>article{
+  margin: 30px 0;
+}
+
+.commentShow .text>article .name{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.commentShow .text>article .comment-content{
+  font-size: 14px;
+  margin: 10px 1em;
+}
+
+.commentShow .text>article time{
+  display: block;
+  text-align: right;
+}
+
+
 .comments {
   width: 820px;
   margin: 0 auto;
@@ -116,6 +168,7 @@ body .article-detail .text {
   margin-top: 40px;
   border-top: 5px #000 solid;
 }
+
 .comments h2:before {
   content: "";
   position: absolute;
@@ -143,8 +196,7 @@ body .article-detail .text {
   margin-left: 0;
   margin-right: 0;
   padding: 0;
-  float: left;
-  display: inline;
+  display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
   width: 790px;
@@ -159,18 +211,16 @@ body .article-detail .text {
 }
 
 .comments .commentsform .name {
-  float: left;
-  display: inline;
+  display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
-  width: 270px;
+  width: 265px;
 }
 
 .comments .commentsform .name input {
   width: 250px;
 }
 .comments .commentsform label {
-  display: block;
   font-size: 0.9em;
 }
 .comments .commentsform .name label:after {
@@ -178,11 +228,10 @@ body .article-detail .text {
 }
 
 .comments .commentsform .email {
-  float: left;
-  display: inline;
+  display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
-  width: 310px;
+  width: 270px;
 }
 
 .comments .commentsform .email input {
@@ -193,13 +242,8 @@ body .article-detail .text {
   content: " *";
 }
 
-.comments .commentsform .url {
-  display: none;
-}
-
 .comments .commentsform .comment {
-  float: left;
-  display: inline;
+  display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
   width: 790px;
@@ -209,13 +253,16 @@ body .article-detail .text {
   width: 530px;
 }
 
+.comments .commentsform .comment label{
+  display: block;
+}
+
 .comments .commentsform .comment label:after {
   content: " *";
 }
 
 .comments .commentsform .submit {
-  float: left;
-  display: inline;
+  display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
   width: 190px;
