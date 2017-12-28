@@ -220,8 +220,18 @@ router.post('/api/account/createComment', (req, res) => {
     }
 })
 
-//查询评论接口
 router.get('/api/account/getComment', (req, res) => {
+    models.Comment.find(req.query, (err, data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+})
+
+//查询评论接口
+router.get('/api/account/getCommentList', (req, res) => {
     models.Comment.count({}, (err, count) => {
         models.Comment.find().limit(parseInt(req.query.pageSize)).skip(parseInt(req.query.pageSize) * parseInt(req.query.count)).exec((err, data) => {
             if (err) {

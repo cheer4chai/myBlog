@@ -10,7 +10,7 @@
                 <div class="image-wrap">
                     <div class="image-wrap2">
                     <div class="image">
-                        <img src="../assets/logo.png" width="210" height="210" alt="">
+                        <img src="../../assets/logo.png" width="210" height="210" alt="">
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="image-wrap">
                     <div class="image-wrap2">
                     <div class="image">
-                        <img src="../assets/logo.png" width="210" height="210" alt="">
+                        <img src="../../assets/logo.png" width="210" height="210" alt="">
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="image-wrap">
                     <div class="image-wrap2">
                     <div class="image">
-                        <img src="../assets/logo.png" width="210" height="210" alt="">
+                        <img src="../../assets/logo.png" width="210" height="210" alt="">
                         </div>
                     </div>
                 </div>

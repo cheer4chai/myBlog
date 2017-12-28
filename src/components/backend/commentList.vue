@@ -36,7 +36,7 @@ export default {
         this.$router.push({ path: "/login" });
       }
     });
-    let url = "/api/api/account/getComment";
+    let url = "/api/api/account/getCommentList";
     this.$http
       .get(url, {
         params: {
@@ -65,7 +65,7 @@ export default {
   methods: {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      let url = "/api/api/account/getComment";
+      let url = "/api/api/account/getCommentList";
       this.$http
         .get(url, {
           params: {
