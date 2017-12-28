@@ -9,7 +9,7 @@
       </el-submenu>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>评论管理</template>
-        <el-menu-item index="articleList">评论查看</el-menu-item>
+        <el-menu-item index="/backend/commentList">评论查看</el-menu-item>
       </el-submenu>
     </el-menu>
   </el-aside>

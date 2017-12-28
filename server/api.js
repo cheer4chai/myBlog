@@ -96,7 +96,7 @@ router.post('/api/account/createContent', (req, res) => {
             summary: req.body.summary,
             detail: req.body.detail,
             cat: req.body.cat,
-            time: Date()
+            time: new Date()
         }
         let result = validate.content(sendObj);
         if (result == 'success') {
@@ -153,7 +153,7 @@ router.post('/api/account/changeContent', (req, res) => {
             detail: req.body.detail,
             cat: req.body.cat,
             image: req.body.image,
-            time: Date()
+            time: new Date()
         }
         let result = validate.content(sendObj);
         if (result == 'success') {
@@ -197,15 +197,14 @@ router.get('/api/account/deleteContent', (req, res) => {
 })
 
 //评论接口
-//新增接口
+//新增评论接口
 router.post('/api/account/createComment', (req, res) => {
     let sendObj = {
         articleId: req.body.articleId,
         name: req.body.name,
-        email: req.body.email,
         content: req.body.content,
         status: 'unreviewed',
-        time: Date()
+        time: new Date()
     }
     let result = validate.comment(sendObj);
     if (result == 'success') {
@@ -221,15 +220,45 @@ router.post('/api/account/createComment', (req, res) => {
     }
 })
 
-//查询评论
+//查询评论接口
 router.get('/api/account/getComment', (req, res) => {
-    models.Comment.find(req.query, (err, data) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send(data);
-        }
-    });
+    models.Comment.count({}, (err, count) => {
+        models.Comment.find().limit(parseInt(req.query.pageSize)).skip(parseInt(req.query.pageSize) * parseInt(req.query.count)).exec((err, data) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send({
+                    data: data,
+                    count: count
+                });
+            }
+        })
+    })
+})
+
+
+//评论删除接口
+router.get('/api/account/deleteComment', (req, res) => {
+    if (req.session.account) {
+        models.Comment.findOne({ _id: req.query.id }, (err, doc) => {
+            if (err) {
+                res.send(err)
+            } else {
+                models.Comment.remove({ _id: req.query.id }, (err) => {
+                    if (err) {
+                        res.send(err)
+                    } else {
+                        res.send({
+                            code: 200,
+                            success: 'delete success!'
+                        })
+                    }
+                })
+            }
+        })
+    } else {
+        res.send({ code: 300, sucess: '请登录' });
+    }
 })
 
 

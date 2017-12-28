@@ -12,6 +12,7 @@ import backend from '../components/backend/backend.vue'
 import editor from '../components/backend/editor.vue'
 import articleList from '../components/backend/articleList.vue'
 import articleDetail from '../components/backend/articleDetail.vue'
+import commentList from '../components/backend/commentList.vue'
 
 Vue.use(Router)
 
@@ -53,6 +54,9 @@ export default new Router({
                 }, {
                     path: '/backend/articleList/id/:id',
                     component: articleDetail
+                }, {
+                    path: 'commentList',
+                    component: commentList
                 }]
             }
         ]
