@@ -2,13 +2,22 @@
 
 > cheerBlog
 
-本项目为前后端分离的一个个人博客项目，后端由nodejs+express+mongodb编写符合RESTful API设计规范的后台接口，前端分为前台展示和后台管理两个模块，UI使用部分element-ui，框架使用vue+vue-rounter+axios完成开发。
+# 前言
 
-## Build Setup
+本项目为前后端分离的一个个人博客项目，开发的目的是为自己搭建一个个人网站的同时熟悉并可以深入了解一下vue及nodejs，项目从开始到现在因为只是利用业余时间来做，基本完成大概花了两个多月的时间，UI方面在设计上参考了一个国外博物馆网站的风格，UI组件库为了图方便直接使用了element-ui，下一步准备将项目的组件都自己实现，进一步熟悉vue开发。
+
+
+##技术栈
+
+后端：nodejs + express + mongodb
+前端：vue + vue-rounter + axios + webpack
+
+
+## 项目运行
 
 ``` bash
 # install dependencies
-npm install
+yarn install or npm install
 
 # start server by node
 node ./server/index.js
@@ -16,16 +25,25 @@ node ./server/index.js
 # serve with hot reload at localhost:2000
 npm run dev
 
+访问 http://localhost:2000
+
 # build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# 项目布局
 
 ```
-.
+
+
+#说明
+
+> 如果本项目对于您有帮助，您可以点右上角 "Star" 支持一下 谢谢！
+
+> 欢迎PR~
+
+
+
+# 项目布局
+```
 │  
 ├─build
 │      
@@ -66,7 +84,4 @@ npm run build --report
 │                                                //          
 └─static                                         //       
     └─UE                                         //ueditor前台配置文件
-.
-
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+```
