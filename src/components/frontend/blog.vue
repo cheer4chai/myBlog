@@ -7,14 +7,14 @@
 			<div class="news-article-wrapper" v-for="(item, index) in blogList">
 				<div class="line-cross">
 					<div class="line-down">
-						<router-link :to="{path: '../article/'+item._id}" class="news-article">
+						<router-link v-if="item._id != 'CNBlog'" :to="{path: '../article/'+item._id}" class="news-article">
 							<div class="vertical-aligner">
 								<div class="image">
 									<img :src='item.image' alt="">
 								</div>
 								<div class="desc">
 									<hgroup>
-										<h3>{{item.time}}</h3>
+										<h3>{{item.time | DateTransform}}</h3>
 										<h4>{{item.title}}</h4>
 									</hgroup>
 									<p class="description">
@@ -24,6 +24,26 @@
 								</div>
 							</div>
 						</router-link>
+                        <a v-if="item._id == 'CNBlog'" :href="item.link" target="_blank" class="news-article">
+							<div class="vertical-aligner">
+								<div class="image">
+									<img :src='item.image' alt="">
+								</div>
+								<div class="desc">
+									<hgroup>
+										<h3>
+                                            <span>{{item.time | DateTransform}}</span>
+                                            <span class="m_l_20">作者：{{item.author}}</span>
+                                        </h3>
+										<h4>{{item.title}}</h4>
+									</hgroup>
+									<p class="description">
+										{{item.summary}}
+									</p>
+									<p class="link">Read More</p>
+								</div>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -41,15 +61,45 @@
 			
 		},
 		mounted() {
-			this.$http.get('/api/api/account/getContent').then(response => {
-				console.log(response)
-				this.blogList = response.data
-			})
+            let _this = this
+            let getContent = function() {
+                return new Promise((resolve, reject) => {
+                    _this.$http.get('/api/api/account/getContent').then(response => {
+                        console.log(response)
+                        _this.blogList = response.data;
+                        if(response.data.length%3) {
+                            resolve(3-response.data.length%3)
+                        }else{
+                            reject()
+                        }
+                    })        
+                })
+            }
+            getContent().then((length) => {
+                _this.$http.get('/api/api/getCNBlog').then(response => {
+                    console.log(response.data)
+                    let CNBlogList = response.data.data.feed.entry;
+                    for(let i=0;i<length;i++) {
+                        _this.blogList.push({
+                            _id: 'CNBlog',
+                            title: CNBlogList[i].title[0]._,
+                            author: CNBlogList[i].author[0].name[0],
+                            summary: CNBlogList[i].summary[0]._,
+                            link: CNBlogList[i].link[0].$.href,
+                            image: 'String',
+                            time: CNBlogList[i].updated[0]
+                        })
+                    }
+                })
+            })
 		}
 	}
 </script>
 
 <style>
+.m_l_20{
+    margin-left: 20px;
+}
 .detail .category-box {
     text-align: center;
     margin-bottom: 60px;

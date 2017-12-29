@@ -26,7 +26,15 @@ new Vue({
     components: { App }
 })
 
-Vue.filter('DateTransform',function(d) {
+Vue.filter('DateTransform', function(d) {
     let now = new Date(d);
-    return now.getFullYear() + '年' + now.getMonth() + '月' + now.getDate() + '日 ' + now.getHours() + ':' + now.getMinutes()
+
+    function LENFix(i, n) {
+        var sRet = i.toString();
+        while (sRet.length < n) {
+            sRet = "0" + sRet;
+        }
+        return sRet;
+    }
+    return now.getFullYear() + '年' + LENFix(now.getMonth() + 1, 2) + '月' + LENFix(now.getDate(), 2) + '日 ' + LENFix(now.getHours(), 2) + ':' + LENFix(now.getMinutes(), 2)
 })

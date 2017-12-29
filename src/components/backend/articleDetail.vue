@@ -241,7 +241,6 @@ export default {
         });
     },
     handleAvatarSuccess(res, file) {
-      console.log(res)
       this.imageUrl = '/api' + res.url;
     },
     beforeAvatarUpload(file) {

@@ -49,4 +49,7 @@ a {
 .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
   opacity: 0
 }
+.fr{
+  float: right;
+}
 </style>

@@ -3,10 +3,15 @@
 const models = require('./db');
 const validate = require('./validate');
 const express = require('express');
+const request = require('request');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const xml2js = require('xml2js');
 
 const router = express.Router();
+
+const parseString = xml2js.parseString;
+
 router.use(cookieParser());
 router.use(session({
     resave: true, // don't save session if unmodified
@@ -272,5 +277,17 @@ router.get('/api/account/deleteComment', (req, res) => {
     }
 })
 
+router.get('/api/getCNBlog', (req, res) => {
+    let url = 'http://wcf.open.cnblogs.com/blog/TenDaysTopDiggPosts/3';
+    let data = {}
+    request(url, (error, response, body) => {
+        parseString(body, (err, result) => {
+            res.send({
+                code: 200,
+                data: result
+            })
+        });
+    })
+})
 
 module.exports = router;
