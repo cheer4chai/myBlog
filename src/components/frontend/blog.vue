@@ -47,6 +47,9 @@
 					</div>
 				</div>
 			</div>
+            <div class="load-more">
+                <div class="loadBox">Load More</div>
+            </div>
 		</div>
 	</div>
 </template>
@@ -67,8 +70,8 @@
                     _this.$http.get('/api/api/account/getContent').then(response => {
                         console.log(response)
                         _this.blogList = response.data;
-                        if(response.data.length%3) {
-                            resolve(3-response.data.length%3)
+                        if(response.data.length%6) {
+                            resolve(6-response.data.length%6)
                         }else{
                             reject()
                         }
@@ -186,6 +189,52 @@
     min-height: 50px;
     min-width: 50px;
 }
+.detail .news-article-wrapper .news-article .description {
+    max-height: 75px;
+    overflow: hidden;
+}
+.detail .load-more{
+    margin: 50px 0;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.detail .load-more::before{
+    content: '';
+    position: absolute;
+    background: #000;
+    width: 5px;
+    height: 410px;
+    top: -370px;
+    left: 400px;
+    margin-left: -2px;
+}
+.detail .load-more .loadBox{
+    position: relative;
+    display: inline-block;
+    width: 230px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 auto;
+    border: 5px #000 solid;
+    cursor: pointer;
+    font-size: 1.25em;
+    margin: 0 40px;
+    font-family: "Microsoft Yahei";
+    font-weight: bold;
+    text-align: center;
+}
+
+.detail .load-more .loadBox::before{
+    content: '';
+    position: absolute;
+    background: #000;
+    width: 80px;
+    height: 5px;
+    left: -85px;
+    top: 30px;
+}
+
 .image {
     background: #fff;
     border: 5px #000 solid;

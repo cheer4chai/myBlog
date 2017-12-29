@@ -278,7 +278,7 @@ router.get('/api/account/deleteComment', (req, res) => {
 })
 
 router.get('/api/getCNBlog', (req, res) => {
-    let url = 'http://wcf.open.cnblogs.com/blog/TenDaysTopDiggPosts/3';
+    let url = 'http://wcf.open.cnblogs.com/blog/TenDaysTopDiggPosts/6';
     let data = {}
     request(url, (error, response, body) => {
         parseString(body, (err, result) => {
