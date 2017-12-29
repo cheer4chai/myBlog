@@ -30,7 +30,7 @@
   :on-success="handleAvatarSuccess"
   :before-upload="beforeAvatarUpload"
 >
-  <img v-if="imageUrl" :src="imageUrl" class="avatar">
+  <img v-if="image" :src="image" class="avatar">
   <i v-else class="el-icon-plus avatar-uploader-icon"></i>
 </el-upload>
   </el-form-item>
@@ -115,7 +115,7 @@ export default {
   data() {
     return {
       defaultMsg: "",
-      imageUrl: "",
+      image: "",
       config: {
         initialFrameWidth: null,
         initialFrameHeight: 350
@@ -168,6 +168,7 @@ export default {
           let obj = {
             account: "chaiyanchen",
             title: this.form.title,
+            image: this.image,
             cat: this.form.cat.join(';'),
             summary: this.form.summary,
             detail: content
@@ -195,7 +196,7 @@ export default {
       });
     },
     handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
+      this.image = URL.createObjectURL(file.raw);
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg" || "image/png";

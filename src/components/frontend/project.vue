@@ -1,7 +1,7 @@
 <template>
   <div class="exhibitions-wrap">
         <article class="exhibition-listing odd">
-            <a class="wrap" href="https://github.com/cheer4chai/cheer">
+            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/cheer">
                 <div class="text firstText">
                     <h3>前端工具库cheer</h3>
                     <p class="date">13 Dec 2016 – 01 Apr 2017</p>
@@ -17,7 +17,7 @@
             </a>
         </article>
         <article class="exhibition-listing even">
-            <a class="wrap" href="/exhibitions/detail/gavin-hipkins-the-domain">
+            <a class="wrap" target="_blank" href="/exhibitions/detail/gavin-hipkins-the-domain">
                 <div class="text">
                     <h3>简易UI组件</h3>
                     <p class="date">25 Nov 2016 – 25 Mar 2017</p>
@@ -33,7 +33,7 @@
             </a>
         </article>
         <article class="exhibition-listing odd">
-            <a class="wrap" href="https://github.com/cheer4chai/myBlog">
+            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/myBlog">
                 <div class="text">
                     <h3>个人博客项目</h3>
                     <p class="date">13 Apr 2017 – 01 Jan 2018</p>

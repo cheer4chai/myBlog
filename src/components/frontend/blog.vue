@@ -10,7 +10,7 @@
 						<router-link :to="{path: '../article/'+item._id}" class="news-article">
 							<div class="vertical-aligner">
 								<div class="image">
-									<img src="../../assets/logo.png" alt="">
+									<img :src='item.image' alt="">
 								</div>
 								<div class="desc">
 									<hgroup>

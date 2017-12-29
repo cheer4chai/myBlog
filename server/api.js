@@ -93,6 +93,7 @@ router.post('/api/account/createContent', (req, res) => {
         let sendObj = {
             account: req.body.account,
             title: req.body.title,
+            image: req.body.image,
             summary: req.body.summary,
             detail: req.body.detail,
             cat: req.body.cat,

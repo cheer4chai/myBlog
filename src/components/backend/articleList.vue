@@ -5,6 +5,8 @@
         </el-table-column>
         <el-table-column prop="cat" label="类别">
         </el-table-column>
+        <el-table-column prop="image" label="封面">
+        </el-table-column>
         <el-table-column prop="summary" label="摘要">
         </el-table-column>
       </el-table>
