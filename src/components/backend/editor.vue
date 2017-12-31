@@ -196,7 +196,7 @@ export default {
       });
     },
     handleAvatarSuccess(res, file) {
-      this.imageUrl = '/api' + res.url;
+      this.image = '/api' + res.url;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg" || "image/png";

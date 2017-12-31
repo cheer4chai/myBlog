@@ -48,7 +48,7 @@ app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function(req, res
     else {
         // console.log('config.json')
         res.setHeader('Content-Type', 'application/json');
-        res.redirect('nodejs/config.json');
+        res.redirect('../nodejs/config.json');
     }
 }));
 
@@ -59,8 +59,8 @@ app.use('/ueditor', function(req, res) {
     res.render('views/');
 });
 // app.use('/index', function(req, res) {
-//     res.render('../dist/index.html');
+//     res.render('../../dist/index.html');
 // });
-//监听8080端口
+//监听8888端口
 app.listen(8888);
 console.log('sucess listen......')
