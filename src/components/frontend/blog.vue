@@ -27,7 +27,7 @@
                         <a v-if="item._id == 'CNBlog'" :href="item.link" target="_blank" class="news-article">
 							<div class="vertical-aligner">
 								<div class="image">
-									<img :src='item.image' alt="">
+									<img src='../../assets/logo.png' alt="">
 								</div>
 								<div class="desc">
 									<hgroup>
@@ -94,7 +94,11 @@
                         })
                     }
                 })
-            })
+            },
+            () => {
+                console.log('123')
+            }
+            )
 		}
 	}
 </script>
