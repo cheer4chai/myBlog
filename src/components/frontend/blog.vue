@@ -70,7 +70,7 @@
                     _this.$http.get('/api/api/account/getContent').then(response => {
                         console.log(response)
                         _this.blogList = response.data;
-                        if(response.data.length%6) {
+                        if(response.data.length%6 || response.data.length==0) {
                             resolve(6-response.data.length%6)
                         }else{
                             reject()
@@ -94,11 +94,7 @@
                         })
                     }
                 })
-            },
-            () => {
-                console.log('123')
-            }
-            )
+            })
 		}
 	}
 </script>

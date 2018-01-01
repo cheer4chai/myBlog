@@ -6,7 +6,7 @@
 <nav class="trees">
   <router-link :to="{path: '/home/blog'}">关于技术</router-link>
   <a href="">随笔</a>
-  <router-link :to="{path: '/home/project'}">关于技术</router-link>
+  <router-link :to="{path: '/home/project'}">个人项目</router-link>
   <a class="last" href="">常用资源</a>
 </nav>
 <router-view></router-view>
