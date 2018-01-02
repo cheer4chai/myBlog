@@ -4,7 +4,7 @@
 			<h3>关于技术</h3>
 		</div>
 		<div class="news-wrap">
-			<div class="news-article-wrapper" v-for="(item, index) in blogList">
+			<div class="news-article-wrapper" v-for="(item) in blogList">
 				<div class="line-cross">
 					<div class="line-down">
 						<router-link v-if="item._id != 'CNBlog'" :to="{path: '../article/'+item._id}" class="news-article">
@@ -27,7 +27,7 @@
                         <a v-if="item._id == 'CNBlog'" :href="item.link" target="_blank" class="news-article">
 							<div class="vertical-aligner">
 								<div class="image">
-									<img src='../../assets/logo.png' alt="">
+									<img style="height: 150px;" src='../../assets/cnBlog.jpg' alt="">
 								</div>
 								<div class="desc">
 									<hgroup>
@@ -162,7 +162,6 @@
     margin-right: 0;
     width: 280px;
     margin: 0 40px 20px 80px;
-    display: inline-block;
     height: 420px;
     position: relative;
     text-align: left;
@@ -236,10 +235,14 @@
 }
 
 .image {
+    width: 210px;
+    height: 210px;
     background: #fff;
     border: 5px #000 solid;
     padding: 10px;
     display: inline-block;
+    display: flex;
+    align-items: center;
 }
 .image img {
     display: block;
