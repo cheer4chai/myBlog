@@ -5,9 +5,9 @@
 </header>
 <nav class="trees">
   <router-link :to="{path: '/home/blog'}">关于技术</router-link>
-  <a href="">随笔</a>
+  <router-link :to="{path: '/home/resource'}">常用资源</router-link>
   <router-link :to="{path: '/home/project'}">个人项目</router-link>
-  <router-link class="last" :to="{path: '/resume'}" target="_blank">关于我</router-link>
+  <router-link class="last" :to="{path: '/resume'}" target="_blank">我的简历</router-link>
 </nav>
 <router-view></router-view>
   </div>

@@ -1,10 +1,9 @@
 <template>
   <div class="exhibitions-wrap">
         <article class="exhibition-listing odd">
-            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/cheer">
+            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/best-chinese-front-end-blogs">
                 <div class="text firstText">
-                    <h3>前端工具库cheer</h3>
-                    <p class="date">13 Dec 2016 – 01 Apr 2017</p>
+                    <h3>优质中文前端博客</h3>
                     <p class="link">Info</p>
                 </div>
                 <div class="image-wrap">
@@ -17,10 +16,9 @@
             </a>
         </article>
         <article class="exhibition-listing even">
-            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/cheerUI">
+            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/Front-end-Interview-questions">
                 <div class="text">
-                    <h3>简易UI组件</h3>
-                    <p class="date">25 Nov 2016 – 25 Mar 2017</p>
+                    <h3>前端面试知识点</h3>
                     <p class="link">Info</p>
                 </div>
                 <div class="image-wrap">
@@ -55,7 +53,7 @@
 
 <script>
 export default {
-  name: 'project'
+  name: 'resource'
 }
 </script>
 

@@ -47,14 +47,16 @@
 					</div>
 				</div>
 			</div>
-            <div class="load-more">
-                <div class="loadBox">Load More</div>
+            <div v-if="blogList.length" class="load-more">
+                <div class="loadBox">To be continue...</div>
             </div>
 		</div>
 	</div>
 </template>
 
 <script>
+    import { Loading } from 'element-ui';
+
 	export default {
 		name: "blog",
 		data() {
@@ -62,9 +64,13 @@
 				blogList: []
 			}
 			
-		},
+        },
+        methods: {
+            
+        },
 		mounted() {
             let _this = this
+            let loadingInstance = Loading.service();
             let getContent = function() {
                 return new Promise((resolve, reject) => {
                     _this.$http.get('/api/api/account/getContent').then(response => {
@@ -79,6 +85,7 @@
             }
             getContent().then((length) => {
                 _this.$http.get('/api/api/getCNBlog').then(response => {
+                    loadingInstance.close()
                     let CNBlogList = response.data.data.feed.entry;
                     for(let i=0;i<length;i++) {
                         _this.blogList.push({
@@ -87,7 +94,6 @@
                             author: CNBlogList[i].author[0].name[0],
                             summary: CNBlogList[i].summary[0]._,
                             link: CNBlogList[i].link[0].$.href,
-                            image: 'String',
                             time: CNBlogList[i].updated[0]
                         })
                     }
@@ -97,7 +103,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 .m_l_20{
     margin-left: 20px;
 }
@@ -211,7 +217,7 @@
     display: inline-block;
     width: 230px;
     height: 60px;
-    line-height: 60px;
+    line-height: 50px;
     margin: 0 auto;
     border: 5px #000 solid;
     cursor: pointer;
@@ -226,9 +232,9 @@
     content: '';
     position: absolute;
     background: #000;
-    width: 80px;
+    width: 85px;
     height: 5px;
-    left: -85px;
+    left: -90px;
     top: 30px;
 }
 

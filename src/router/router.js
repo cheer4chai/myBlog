@@ -7,6 +7,7 @@ import login from '../components/frontend/login.vue'
 import blog from '../components/frontend/blog.vue'
 import article from '../components/frontend/article.vue'
 import project from '../components/frontend/project.vue'
+import resource from '../components/frontend/resource.vue'
 //后台
 import backend from '../components/backend/backend.vue'
 import editor from '../components/backend/editor.vue'
@@ -38,6 +39,9 @@ export default new Router({
                 }, {
                     path: 'project',
                     component: project
+                }, {
+                    path: 'resource',
+                    component: resource
                 }]
             }, {
                 path: '/login',
