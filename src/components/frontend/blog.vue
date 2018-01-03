@@ -68,7 +68,6 @@
             let getContent = function() {
                 return new Promise((resolve, reject) => {
                     _this.$http.get('/api/api/account/getContent').then(response => {
-                        console.log(response)
                         _this.blogList = response.data;
                         if(response.data.length%6 || response.data.length==0) {
                             resolve(6-response.data.length%6)
@@ -80,7 +79,6 @@
             }
             getContent().then((length) => {
                 _this.$http.get('/api/api/getCNBlog').then(response => {
-                    console.log(response.data)
                     let CNBlogList = response.data.data.feed.entry;
                     for(let i=0;i<length;i++) {
                         _this.blogList.push({
@@ -246,8 +244,8 @@
 }
 .image img {
     display: block;
-	width: 210px;
-    height: 210px;
+	width: 180px;
+    height: 180px;
 }
 
 h3 {

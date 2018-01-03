@@ -7,7 +7,7 @@
   <router-link :to="{path: '/home/blog'}">关于技术</router-link>
   <a href="">随笔</a>
   <router-link :to="{path: '/home/project'}">个人项目</router-link>
-  <a class="last" href="">常用资源</a>
+  <router-link class="last" :to="{path: '/resume'}" target="_blank">关于我</router-link>
 </nav>
 <router-view></router-view>
   </div>
