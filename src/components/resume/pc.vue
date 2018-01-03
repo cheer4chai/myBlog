@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="resume">
     <StyleEditor ref="styleEditor" :code="currentStyle"></StyleEditor>
     <ResumeEditor ref="resumeEditor" :markdown="currentMarkdown" :enableHtml="enableHtml"></ResumeEditor>
   </div>
@@ -32,7 +32,7 @@ export default {
   transition: all .3s;
 }
 /* 白色背景太单调了，我们来点背景 */
-html {
+body {
   color: rgb(222,222,222); background: rgb(0,43,54);
 }
 /* 文字离边框太近了 */
@@ -111,6 +111,9 @@ html{
   padding: .5em;
   background: #ddd;
 }
+.resumeEditor a:hover{
+  text-decoration: underline;
+}
 `],
         currentMarkdown: '',
         fullMarkdown: `柴延晨
@@ -121,8 +124,8 @@ html{
 技能
 ----
 
-* HTML/CSS/JavaScript
-* Node.js
+* 熟悉HTML/CSS/JavaScript 
+* 了解Node.js 
 
 工作经历
 ----
@@ -131,13 +134,48 @@ html{
 
 海南航空集团 易建科技 前端工程师
 
+工作经历
+---
 
+#### 首都航空官网网站
+
+* 作为团队唯一的前端负责PC端及手机端网站的日常维护以及优化改版，完成基本的页面布局并解决页面样式的兼容性问题
+* 使用jQuery框架，掌握jQuery与DOM操作及事件处理，了解动态绑定事件的原理，完成网站日常业务开发，编写常见组件
+* 与项目经理以及后台人员沟通，主导完成网站部分页面改版并推动前后端分离工作
+
+#### 首都航空手机端国际票项目
+
+* 作为前端负责人推动团队技术选型，选定Vue+vue-router+vuex+axios框架进行项目开发并完成项目架构简单搭建
+* 应用es6语法进行开发，页面组件化，为团队成员分配职责编写web所用组件
+* 与后台开发沟通并协定接口，通过axios获取后台数据，进行数据解析，实现与后台交互
+
+#### 海航集团BIM统计平台
+
+* 作为前端开发负责基本页面布局及动态效果编写，因无兼容性要求应用了部分CSS3动态效果，并应用熟悉了flex布局。
+* 引用echarts插件实现对于复杂数据统计的可视化，经过查阅资料及应用，熟悉echarts的API
+ 
+个人项目
+---
+#### cheer常用工具库 --> [项目源码](https://github.com/cheer4chai/cheer)
+
+* 使用原生js封装了部分在项目常用的工具函数，例如URL等参数解析、cookie处理、数据验证等，进一步熟悉了原生js的语法及应用
+* 了解了AMO/CMD/UMD模块化规范的不同和优劣，并简单使用webpack应用UMD规范封装该工具库
+
+#### 个人博客 --> [项目源码](https://github.com/cheer4chai/myBlog)
+
+* 采用前后端分离的开发模式，独立完成前台展示及后台管理页面视觉设计及开发，其中前端使用vue+vue-rounter，UI库使用了elementUI，实现简单的单页面应用
+* 后端使用node+express，完成了包括写文章，传输图片，文章评论，爬取cnBlog数据并处理转发等功能开发，以及与mongodb数据库的交互
+
+
+个人爱好
+----
+* 热爱健身，坚持两年以上，身体强健
+* 喜欢电脑游戏，在dota2、绝地求生、炉石传说等游戏领域都颇有心得
 
 链接
 ----
 
 * [GitHub](https://github.com/cheer4chai)
-
 
 `
       }
