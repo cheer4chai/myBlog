@@ -6,6 +6,8 @@
 
 本项目为前后端分离的一个个人博客项目，开发的目的是为自己搭建一个个人网站的同时熟悉并可以深入了解一下vue及nodejs，项目从开始到现在因为只是利用业余时间来做，基本完成大概花了两个多月的时间，UI方面在设计上参考了一个国外博物馆网站的风格，UI组件库为了图方便直接使用了element-ui，下一步准备将项目的组件都自己实现，进一步熟悉vue开发。
 
+另：关于我模块中的简历效果来自于 [https://github.com/jirengu-inc/animating-resume](https://github.com/jirengu-inc/animating-resume)
+
 
 ## 技术栈
 
@@ -21,7 +23,7 @@
 yarn install or npm install
 
 # 连接数据库开启后端服务
-数据库使用的是mongodb，因此需要在本地安装mongodb https://www.mongodb.com/download-center?jmp=nav，并在本地运行，数据库地址写在了server/db.js中，如需更改在该文件中更改，运行数据库后开启后端服务
+数据库使用的是mongodb，因此需要在本地安装 [mongodb](https://www.mongodb.com/download-center?jmp=nav)，并在本地运行，数据库地址写在了server/db.js中，如需更改在该文件中更改，运行数据库后开启后端服务
 
 node ./server/index.js
 
