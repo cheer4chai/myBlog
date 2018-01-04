@@ -9,7 +9,7 @@
                 <div class="image-wrap">
                     <div class="image-wrap2">
                     <div class="image">
-                        <img src="../../assets/logo.png" width="210" height="210" alt="">
+                        <img src="../../assets/blog.png" width="210" height="210" alt="">
                         </div>
                     </div>
                 </div>
@@ -24,23 +24,7 @@
                 <div class="image-wrap">
                     <div class="image-wrap2">
                     <div class="image">
-                        <img src="../../assets/logo.png" width="210" height="210" alt="">
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </article>
-        <article class="exhibition-listing odd">
-            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/myBlog">
-                <div class="text">
-                    <h3>个人博客项目</h3>
-                    <p class="date">13 Apr 2017 – 01 Jan 2018</p>
-                    <p class="link">Info</p>
-                </div>
-                <div class="image-wrap">
-                    <div class="image-wrap2">
-                    <div class="image">
-                        <img src="../../assets/logo.png" width="210" height="210" alt="">
+                        <img src="../../assets/interview.png" width="210" height="210" alt="">
                         </div>
                     </div>
                 </div>
