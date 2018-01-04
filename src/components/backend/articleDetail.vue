@@ -150,7 +150,7 @@ export default {
     };
   },
   mounted() {
-    let url = "/api/api/account/getContent?_id=" + this.$route.params.id;
+    let url = "/api/account/getContent?_id=" + this.$route.params.id;
     this.$http.get(url).then(
       response => {
         this.defaultMsg = response.data[0].detail;
@@ -178,7 +178,7 @@ export default {
             loadingInstance.close();
           });
           let content = this.$refs.ue.getUEContent();
-          let URL = "/api/api/account/changeContent";
+          let URL = "/api/account/changeContent";
           let obj = {
             id: this.$route.params.id,
             account: "chaiyanchen",
@@ -221,7 +221,7 @@ export default {
       })
         .then(() => {
           this.$http
-            .get("/api/api/account/deleteContent?id=" + this.$route.params.id)
+            .get("/api/account/deleteContent?id=" + this.$route.params.id)
             .then(response => {
               console.log(response);
               if (response.data.code == 200) {
@@ -241,7 +241,7 @@ export default {
         });
     },
     handleAvatarSuccess(res, file) {
-      this.imageUrl = '/api' + res.url;
+      this.imageUrl = res.url;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg" || "image/png";

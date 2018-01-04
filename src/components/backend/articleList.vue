@@ -26,13 +26,13 @@ export default {
   mounted() {
     //检验登录状态
     this.$http
-      .get('/api/api/getSession')
+      .get('/api/getSession')
       .then(response => {
         if(response.data.code == 201) {
           this.$router.push({ path: "/login"});
         }
       })
-    let url = "/api/api/account/getArticleList";
+    let url = "/api/account/getArticleList";
     this.$http
       .get(url, {
         params: {
@@ -61,7 +61,7 @@ export default {
   methods: {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      let url = "/api/api/account/getArticleList";
+      let url = "/api/account/getArticleList";
       this.$http
         .get(url, {
           params: {

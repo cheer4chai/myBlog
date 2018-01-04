@@ -15,7 +15,28 @@ module.exports = {
                 target: 'http://localhost:8888/',
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/api': ''
+                    '^/api': '/api'
+                }
+            },
+            '/ueditor': {
+                target: 'http://localhost:8888/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/ueditor': '/ueditor'
+                }
+            },
+            '/nodejs': {
+                target: 'http://localhost:8888/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/nodejs': '/nodejs'
+                }
+            },
+            '/img': {
+                target: 'http://localhost:8888/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/img': '/img'
                 }
             }
         },
@@ -58,10 +79,10 @@ module.exports = {
 
     build: {
         // Template for index.html
-        index: path.resolve(__dirname, '../dist/index.html'),
+        index: path.resolve(__dirname, '../server/public/index.html'),
 
         // Paths
-        assetsRoot: path.resolve(__dirname, '../dist'),
+        assetsRoot: path.resolve(__dirname, '../server/public'),
         assetsSubDirectory: 'static',
         assetsPublicPath: './',
 

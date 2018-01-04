@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(bodyParser.json())
 app.use(api)
 
-app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function(req, res, next) {
+app.use("/api/ueditor/ue", ueditor(path.join(__dirname, 'public'), function(req, res, next) {
     //客户端上传文件设置
     var imgDir = '/img/ueditor/'
     var ActionType = req.query.action;
@@ -46,21 +46,15 @@ app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function(req, res
     }
     // 客户端发起其它请求
     else {
-        // console.log('config.json')
         res.setHeader('Content-Type', 'application/json');
-        res.redirect('../nodejs/config.json');
+        res.redirect('/nodejs/config.json');
     }
 }));
 
 //处理静态文件 todo
 // 访问静态资源文件 这里是访问所有dist目录下的静态资源文件
 app.use(express.static(path.resolve(__dirname, 'public/')))
-app.use('/ueditor', function(req, res) {
-    res.render('views/');
-});
-// app.use('/index', function(req, res) {
-//     res.render('../../dist/index.html');
-// });
+
 //监听8888端口
 app.listen(8888);
 console.log('sucess listen......')

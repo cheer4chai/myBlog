@@ -107,13 +107,13 @@ export default {
   mounted() {
     window.scrollTo(0,0)
     //获取文章内容
-    let url = "/api/api/account/getContent?_id=" + this.$route.params.articleId;
+    let url = "/api/account/getContent?_id=" + this.$route.params.articleId;
     this.$http.get(url).then(response => {
       console.log(response);
       this.blogData = response.data[0];
     });
     //获取评论内容，只读取前10条评论
-    let commentUrl = "/api/api/account/getComment?articleId=" + this.$route.params.articleId;
+    let commentUrl = "/api/account/getComment?articleId=" + this.$route.params.articleId;
     this.$http.get(commentUrl).then(response => {
       this.commentData = response.data.splice(0,10);
     });

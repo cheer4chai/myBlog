@@ -31,12 +31,12 @@ export default {
   name: "commentList",
   mounted() {
     //检验登录状态
-    this.$http.get("/api/api/getSession").then(response => {
+    this.$http.get("/api/getSession").then(response => {
       if (response.data.code == 201) {
         this.$router.push({ path: "/login" });
       }
     });
-    let url = "/api/api/account/getCommentList";
+    let url = "/api/account/getCommentList";
     this.$http
       .get(url, {
         params: {
@@ -65,7 +65,7 @@ export default {
   methods: {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      let url = "/api/api/account/getCommentList";
+      let url = "/api/account/getCommentList";
       this.$http
         .get(url, {
           params: {
@@ -87,7 +87,7 @@ export default {
       console.log(row);
     },
     remove(row) {
-      this.$http.get("/api/api/account/deleteComment?id=" + row._id).then(
+      this.$http.get("/api/account/deleteComment?id=" + row._id).then(
           response => {
               if (response.data.code == 200) {
                 this.$message({

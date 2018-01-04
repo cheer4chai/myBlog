@@ -73,7 +73,7 @@
             let loadingInstance = Loading.service();
             let getContent = function() {
                 return new Promise((resolve, reject) => {
-                    _this.$http.get('/api/api/account/getContent').then(response => {
+                    _this.$http.get('/api/account/getContent').then(response => {
                         _this.blogList = response.data;
                         if(response.data.length%6 || response.data.length==0) {
                             resolve(6-response.data.length%6)
@@ -84,7 +84,7 @@
                 })
             }
             getContent().then((length) => {
-                _this.$http.get('/api/api/getCNBlog').then(response => {
+                _this.$http.get('/api/getCNBlog').then(response => {
                     loadingInstance.close()
                     let CNBlogList = response.data.data.feed.entry;
                     for(let i=0;i<length;i++) {

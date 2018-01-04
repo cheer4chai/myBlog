@@ -164,7 +164,7 @@ export default {
             loadingInstance.close();
           });
           let content = this.$refs.ue.getUEContent();
-          let URL = "/api/api/account/createContent";
+          let URL = "/api/account/createContent";
           let obj = {
             account: "chaiyanchen",
             title: this.form.title,
@@ -196,7 +196,7 @@ export default {
       });
     },
     handleAvatarSuccess(res, file) {
-      this.image = '/api' + res.url;
+      this.image =  res.url;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg" || "image/png";

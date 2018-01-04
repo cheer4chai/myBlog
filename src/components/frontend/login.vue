@@ -112,7 +112,7 @@
         const loading = this.$loading();
         // 获取已有账号密码
         axios
-          .get("/api/api/account/getAccount", {
+          .get("/api/account/getAccount", {
             params: {
               account: this.account,
               password: this.password
@@ -134,7 +134,7 @@
       },
       register() {
         axios
-          .post("/api/api/account/createAccount", {
+          .post("/api/account/createAccount", {
             account: this.account,
             password: this.password
           })

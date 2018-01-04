@@ -5,8 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /test/unit/coverage/
-server/public/img
-server/public/img
+server/public
 
 # Editor directories and files
 .idea
