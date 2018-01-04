@@ -107,9 +107,10 @@ export default {
   mounted() {
     window.scrollTo(0,0)
     //获取文章内容
+    const loading = this.$loading({lock: true});
     let url = "/api/account/getContent?_id=" + this.$route.params.articleId;
     this.$http.get(url).then(response => {
-      console.log(response);
+      loading.close();
       this.blogData = response.data[0];
     });
     //获取评论内容，只读取前10条评论

@@ -1,7 +1,7 @@
 <template>
   <el-container style="height: 100vh; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-    <el-menu :default-openeds="['1']" :router=true>
+    <el-menu :default-openeds="['1']" :router='true'>
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>文章管理</template>
           <el-menu-item index="/backend/articleList">文章列表</el-menu-item>

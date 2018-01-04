@@ -101,7 +101,7 @@
 
 
 <script>
-import { Loading } from "element-ui";
+// import { Loading } from "element-ui";
 import UE from "../backend/UE.vue";
 
 export default {
@@ -172,10 +172,8 @@ export default {
       // 获取内容方法
       this.$refs["form"].validate(valid => {
         if (valid) {
-          let loadingInstance = Loading.service();
           this.$nextTick(() => {
             // 以服务的方式调用的 Loading 需要异步关闭
-            loadingInstance.close();
           });
           let content = this.$refs.ue.getUEContent();
           let URL = "/api/account/changeContent";

@@ -27,7 +27,7 @@
                         <a v-if="item._id == 'CNBlog'" :href="item.link" target="_blank" class="news-article">
 							<div class="vertical-aligner">
 								<div class="image">
-									<img style="height: 150px;" src='../../assets/cnBlog.jpg' alt="">
+									<img style="height: 90px;" src='../../assets/cnBlog.png' alt="">
 								</div>
 								<div class="desc">
 									<hgroup>
@@ -55,7 +55,6 @@
 </template>
 
 <script>
-    import { Loading } from 'element-ui';
 
 	export default {
 		name: "blog",
@@ -70,7 +69,9 @@
         },
 		mounted() {
             let _this = this
-            let loadingInstance = Loading.service();
+            const loading = this.$loading({
+                lock: true
+            });
             let getContent = function() {
                 return new Promise((resolve, reject) => {
                     _this.$http.get('/api/account/getContent').then(response => {
@@ -85,7 +86,7 @@
             }
             getContent().then((length) => {
                 _this.$http.get('/api/getCNBlog').then(response => {
-                    loadingInstance.close()
+                    loading.close()
                     let CNBlogList = response.data.data.feed.entry;
                     for(let i=0;i<length;i++) {
                         _this.blogList.push({

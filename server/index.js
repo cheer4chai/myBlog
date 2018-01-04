@@ -6,6 +6,8 @@ const fs = require('fs');
 const path = require('path');
 //引入处理post数据模块
 var bodyParser = require('body-parser');
+//引入compress
+const compress = require('compression')
 
 //引入express
 const express = require('express');
@@ -21,6 +23,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 // parse application/json
 app.use(bodyParser.json())
+app.use(compress())
 app.use(api)
 
 app.use("/api/ueditor/ue", ueditor(path.join(__dirname, 'public'), function(req, res, next) {

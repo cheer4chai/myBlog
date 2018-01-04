@@ -106,7 +106,7 @@
 
 
 <script>
-import { Loading } from "element-ui";
+// import { Loading } from "element-ui";
 import UE from "../backend/UE.vue";
 
 export default {
@@ -157,11 +157,13 @@ export default {
     getUEContent() {
       // 获取内容方法
       this.$refs["form"].validate(valid => {
+        var loading;
         if (valid) {
-          let loadingInstance = Loading.service();
           this.$nextTick(() => {
             // 以服务的方式调用的 Loading 需要异步关闭
-            loadingInstance.close();
+            loading = this.$loading({
+                lock: true
+            });
           });
           let content = this.$refs.ue.getUEContent();
           let URL = "/api/account/createContent";
@@ -175,6 +177,7 @@ export default {
           };
           this.$http.post(URL, obj).then(
             response => {
+              loading.close()
               if (response.status == 200) {
                 this.$message({
                   message: response.data.sucess,
