@@ -22,7 +22,7 @@
 
 <style>
   .m_t_20 {
-    margin-top: 20px;
+    margin-top: 20px!important;
   }
   .app_content {
     height: 100%;
