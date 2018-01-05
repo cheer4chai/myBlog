@@ -124,8 +124,8 @@ html{
 技能
 ----
 
-* 熟悉HTML/CSS/JavaScript 
-* 了解Node.js 
+* HTML/CSS/JavaScript 
+* Node.js 
 
 工作经历
 ----

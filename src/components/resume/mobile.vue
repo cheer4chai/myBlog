@@ -137,7 +137,7 @@ html{
 ----
 
 * HTML/CSS/JavaScript
-* Node.js（略懂）
+* Node.js
 
 工作经历
 ----
