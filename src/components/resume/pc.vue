@@ -1,5 +1,5 @@
 <template>
-  <div id="resume">
+  <div id="resumeDetail">
     <StyleEditor ref="styleEditor" :code="currentStyle"></StyleEditor>
     <ResumeEditor ref="resumeEditor" :markdown="currentMarkdown" :enableHtml="enableHtml"></ResumeEditor>
   </div>

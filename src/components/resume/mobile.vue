@@ -1,5 +1,5 @@
 <template>
-  <div id="resume">
+  <div id="resumeDetail">
     <StyleEditor ref="styleEditor" :code="currentStyle"></StyleEditor>
     <ResumeEditor ref="resumeEditor" :markdown="currentMarkdown" :enableHtml="enableHtml"></ResumeEditor>
   </div>
@@ -265,7 +265,7 @@ html{
 </script>
 
 <style scoped>
-  #app {
+  #resumeDetail {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
