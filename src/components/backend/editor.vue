@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="articleForm">
     <el-form ref="form" :model="form" :rules="rules" label-width="80px">
   <el-form-item label="文章标题" prop="title">
     <el-input v-model="form.title"></el-input>
@@ -89,7 +89,7 @@
 .avatar-uploader .el-upload:hover {
   border-color: #409eff;
 }
-.avatar-uploader-icon {
+.articleForm .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
   width: 178px;

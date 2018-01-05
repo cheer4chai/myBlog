@@ -2,8 +2,7 @@
   <div id="login" class="app_content">
     <div class="detaile">
       <div class="loginChoice">
-        <span @click="changeLoginWay" :class="{on: loginType}">登陆</span>
-        <span @click="changeLoginWay" :class="{on: !loginType}">注册</span>
+        <span :class="on">登陆</span>
       </div>
       <div class="form" v-if="loginType">
         <el-input class="m_t_20" v-model="account" placeholder="请输入账号"></el-input>
@@ -15,25 +14,7 @@
           </el-switch>
         </section>
 
-        <el-button class="m_t_20" type="primary" @click="login">登录</el-button>
-      </div>
-      <div class="form" v-if="!loginType">
-        <el-input class="m_t_20" v-model="account" placeholder="请输入账号"></el-input>
-        <section class="password">
-          <el-input v-if="!showPassword1" class="m_t_20" type="password" v-model="password" placeholder="请输入密码"></el-input>
-          <el-input v-else class="m_t_20" type="text" v-model="password" placeholder="请输入密码"></el-input>
-          <el-switch class="passwordSwitch"
-                     v-model="showPassword1">
-          </el-switch>
-        </section>
-        <section class="password">
-          <el-input v-if="!showConfirmpassword" class="m_t_20" type="password" v-model="confirmPassword" placeholder="请再次输入密码"></el-input>
-          <el-input v-else class="m_t_20" type="text" v-model="confirmPassword" placeholder="请再次输入密码"></el-input>
-          <el-switch class="passwordSwitch"
-                     v-model="showConfirmpassword">
-          </el-switch>
-        </section>
-        <el-button class="m_t_20" type="success" @click="register">注册</el-button>
+        <el-button class="m_t_20" type="primary" @click="login">登陆</el-button>
       </div>
     </div>
   </div>
@@ -80,7 +61,7 @@
     position: relative;
   }
 
-  .passwordSwitch {
+  .form .passwordSwitch {
     position: absolute;
     top: 30px;
     right: 5px;
@@ -144,9 +125,6 @@
           .catch(reject => {
             console.log(reject);
           });
-      },
-      changeLoginWay() {
-        this.loginType = !this.loginType;
       }
     }
   };
