@@ -4,7 +4,7 @@
 
 # 前言
 
-本项目为前后端分离的一个个人博客项目，开发的目的是为自己搭建一个个人网站的同时熟悉并可以深入了解一下vue及nodejs，项目从开始到现在因为只是利用业余时间来做，从开始到基本完成大概花了两个多月的时间，UI方面在设计上参考了一个国外博物馆网站的风格，UI组件库为了图方便直接使用了element-ui，下一步准备将项目的组件都自己实现，进一步熟悉vue开发。
+本项目为前后端分离的一个个人博客项目，开发的目的是为自己搭建一个个人网站的同时熟悉并可以深入了解一下vue以及nodejs来作为后台语言进行开发的应用，项目从开始到现在因为只是利用业余时间来做，从开始到基本完成大概花了两个多月的时间，UI方面在设计上参考了一个国外博物馆网站的风格，UI组件库为了图方便直接使用了element-ui，下一步准备将项目的组件都自己实现，进一步熟悉vue开发。
 
 另：关于我的简历中的动态效果来自于 [https://github.com/jirengu-inc/animating-resume](https://github.com/jirengu-inc/animating-resume)
 
@@ -81,12 +81,20 @@ npm run build
 │  │  │      editor.vue                          //文章编辑                  
 │  │  │      UE.vue                              //Ueditor组件              
 │  │  │                                          //            
-│  │  └─frontend                                 //前台展示  
-│  │          article.vue                        //文章详情                    
-│  │          blog.vue                           //文章列表页    
-│  │          Hello.vue                          //博客首页              
-│  │          login.vue                          //登录页 
-│  │          project.vue                        //项目展示页
+│  │  ├─frontend                                 //前台展示  
+│  │  │       article.vue                        //文章详情                    
+│  │  │       blog.vue                           //文章列表页    
+│  │  │       Hello.vue                          //博客首页              
+│  │  │       login.vue                          //登录页 
+│  │  │       project.vue                        //项目展示页
+│  │  │      
+│  │  └─resume                                   //简历展示页面
+│  │          index.vue                          //入口，导向pc及手机端
+│  │          mobile.vue                         //手机端
+│  │          pc.vue                             //pc端
+│  │          ResumeEditor.vue                   //内容显示组件
+│  │          StyleEditor.vue                    //样式显示组件
+
 │  │                                             //             
 │  └─router                                      //          
 │          router.js                             //路由文件
