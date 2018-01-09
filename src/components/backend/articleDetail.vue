@@ -125,11 +125,11 @@ export default {
       rules: {
         title: [
           { required: true, message: "请输入文章标题", trigger: "blur" },
-          { min: 1, max: 20, message: "长度在 1 到 20 个字符", trigger: "blur" }
+          { min: 1, max: 30, message: "长度在 1 到 30 个字符", trigger: "blur" }
         ],
         summary: [
           { required: true, message: "请输入文章概要", trigger: "blur" },
-          { min: 1, max: 100, message: "长度在 1 到 100 个字符", trigger: "blur" }
+          { min: 1, max: 200, message: "长度在 1 到 200 个字符", trigger: "blur" }
         ],
         cat: [{ required: true, message: "请选择文章分类", trigger: "change" }]
       },
