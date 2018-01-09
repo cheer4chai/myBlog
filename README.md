@@ -25,7 +25,9 @@ yarn install or npm install
 # 连接数据库开启后端服务
 数据库使用的是mongodb，因此需要在本地安装 [mongodb](https://www.mongodb.com/download-center?jmp=nav)，并在本地运行，数据库地址写在了server/db.js中，如需更改在该文件中更改，运行数据库后执行命令开启后端服务
 
-node ./server/index.js
+mongod --dbpath xxxxx
+
+npm run server
 
 # serve with hot reload at localhost:2000
 dev模式
