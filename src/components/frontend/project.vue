@@ -17,16 +17,16 @@
             </a>
         </article>
         <article class="exhibition-listing even">
-            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/cheerUI">
+            <a class="wrap" target="_blank" href="https://github.com/cheer4chai/webpack-learning">
                 <div class="text">
-                    <h3>简易UI组件</h3>
+                    <h3>从零开始完成一个vue-cli</h3>
                     <p class="date">25 Nov 2016 – 25 Mar 2017</p>
                     <p class="link">Info</p>
                 </div>
                 <div class="image-wrap">
                     <div class="image-wrap2">
                     <div class="image">
-                        <img src="../../assets/ui.png" width="210" height="210" alt="">
+                        <img src="../../assets/webpack.png" width="210" height="210" alt="">
                         </div>
                     </div>
                 </div>
