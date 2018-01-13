@@ -49,10 +49,10 @@
         </transition>
           
         </section>
-      	<nav class="news-transport">
+      	<!-- <nav class="news-transport">
             <a href="/news/blog/2017/holiday-open-hours-and-activities" class="previous">上一篇</a>
             <a href="/news/mine-the-dowse-shop/2017/the-dowse-christmas-gift-guide" class="next">下一篇</a>
-    	</nav>
+    	</nav> -->
     </article>
 	<footer id="footer"></footer>
   </div>

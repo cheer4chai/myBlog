@@ -85,10 +85,8 @@ body #footer {
 
 #footer {
     max-width: 1040px;
-    margin: 80px auto 0;
-    padding: 0 80px 130px;
+    margin: 0 auto;
     position: relative;
-    margin-top: 80px;
     z-index: 100;
     color: #222;
 }
