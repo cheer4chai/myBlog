@@ -171,7 +171,7 @@ html{
 #### cheer常用工具库 --> [项目源码](https://github.com/cheer4chai/cheer)
 
 * 使用原生js封装了部分在项目常用的工具函数，例如URL等参数解析、cookie处理、数据验证等，进一步熟悉了原生js的语法及应用
-* 了解了AMO/CMD/UMD模块化规范的不同和优劣，并简单使用webpack应用UMD规范封装该工具库
+* 了解了AMD/CMD/UMD模块化规范的不同和优劣，并简单使用webpack应用UMD规范封装该工具库
 
 #### 个人博客 --> [项目源码](https://github.com/cheer4chai/myBlog)
 
