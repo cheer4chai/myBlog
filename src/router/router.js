@@ -9,13 +9,15 @@ import article from '../components/frontend/article.vue'
 import project from '../components/frontend/project.vue'
 import resource from '../components/frontend/resource.vue'
 //后台
-import backend from '../components/backend/backend.vue'
-import editor from '../components/backend/editor.vue'
-import articleList from '../components/backend/articleList.vue'
-import articleDetail from '../components/backend/articleDetail.vue'
-import commentList from '../components/backend/commentList.vue'
+const backend = ()=> import('../components/backend/backend.vue')
+const editor = ()=> import('../components/backend/editor.vue')
+const articleList = ()=> import('../components/backend/articleList.vue')
+const articleDetail = ()=> import('../components/backend/articleDetail.vue')
+const commentList = ()=> import('../components/backend/commentList.vue')
+
 //简历
-import resumeIndex from '../components/resume/index.vue'
+const resumeIndex = ()=> import('../components/resume/index.vue')
+
 Vue.use(Router)
 
 export default new Router({
